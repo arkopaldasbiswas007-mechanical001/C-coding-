@@ -1,0 +1,76 @@
+#include <stdio.h>
+
+int a[10];
+int top = -1;
+
+int main()
+{
+    int choice;
+    int val;
+
+    while(1)
+    {
+        printf("\nChoose what you want to do:\n");
+        printf("1. Push (Add element)\n");
+        printf("2. Pop (Remove element)\n");
+        printf("3. Display stack\n");
+        printf("4. Exit\n");
+
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+            case 1:
+                if(top == 9)
+                {
+                    printf("Stack is full, cannot add more elements\n");
+                }
+                else
+                {
+                    printf("Enter the value you want to add: ");
+                    scanf("%d", &val);
+
+                    top = top + 1;
+                    a[top] = val;
+
+                    printf("Value %d has been added to the stack\n", val);
+                }
+                break;
+
+            case 2:
+                if(top == -1)
+                {
+                    printf("Stack is empty, nothing to remove\n");
+                }
+                else
+                {
+                    printf("Removed value: %d\n", a[top]);
+                    top = top - 1;
+                }
+                break;
+
+            case 3:
+                if(top == -1)
+                {
+                    printf("Stack is empty\n");
+                }
+                else
+                {
+                    printf("Stack elements from top to bottom:\n");
+                    for(int i = top; i >= 0; i--)
+                    {
+                        printf("%d\n", a[i]);
+                    }
+                }
+                break;
+
+            case 4:
+                printf("Program ended\n");
+                return 0;
+
+            default:
+                printf("Wrong choice, please try again\n");
+        }
+    }
+}
